@@ -1,28 +1,17 @@
 import { useEffect, useState } from "react";
 
-/** ---- Customize this: featured projects you want to highlight ---- */
 const featuredProjects = [
   {
     id: "advanced-react-web-application",
     title: "Advanced React Web Application",
     description:
       "A modern React app demonstrating component composition, routing, state management, and clean UI patterns.",
-    tech: ["React", "Vite", "TailwindCSS"],
+    tech: ["React", "Vite", "Bootstrap"],
     repoUrl: "https://github.com/dmorris95/advanced-react-web-application",
-    demoUrl: "", // e.g. "https://advanced-react-web-application.vercel.app"
-    coverUrl: "", // e.g. "/advanced-react-cover.png" (put image in /public)
+    demoUrl: "", // STILL NEED TO ADD
+    coverUrl: "", 
     snippetTitle: "Custom hook example",
-    snippet: `import { useEffect, useState } from "react";
-
-/** Debounce any changing value for snappy search UIs */
-export function useDebounce(value, delay = 300) {
-  const [debounced, setDebounced] = useState(value);
-  useEffect(() => {
-    const id = setTimeout(() => setDebounced(value), delay);
-    return () => clearTimeout(id);
-  }, [value, delay]);
-  return debounced;
-}`,
+    snippet: "" // ENTER SNIPPET
   },
   {
     id: "mechanic-shop-flask",
@@ -31,51 +20,40 @@ export function useDebounce(value, delay = 300) {
       "Flask + SQL project for managing customers, vehicles, work orders, and service history with clean REST endpoints.",
     tech: ["Python", "Flask", "SQLAlchemy", "SQLite/PostgreSQL"],
     repoUrl: "https://github.com/dmorris95/Mechanic_Shop_Flask",
-    demoUrl: "", // deploy API/UI later; e.g. "https://mechanic-shop.onrender.com"
+    demoUrl: "", // STILL NEED TO ADD
     coverUrl: "",
     snippetTitle: "Example Flask route",
-    snippet: `from flask import Blueprint, request, jsonify
-from models import db, WorkOrder
-
-bp = Blueprint("workorders", __name__)
-
-@bp.post("/workorders")
-def create_workorder():
-    data = request.get_json()
-    wo = WorkOrder(**data)
-    db.session.add(wo)
-    db.session.commit()
-    return jsonify(wo.to_dict()), 201`,
-  },
+    snippet: "" // USE DIFFERENT SNIPPET
+  }, 
   {
     id: "nyc-wifi-map",
     title: "NYC Wi-Fi Map",
     description:
       "Interactive map visualizing public Wi-Fi locations in NYC with clustering and friendly popups.",
-    tech: ["JavaScript", "Leaflet", "GeoJSON"],
+    tech: ["JavaScript", "Leaflet", "Pandas"],
     repoUrl: "https://github.com/dmorris95/NYC_Wifi_Map",
-    demoUrl: "", // e.g. "https://dmorris95.github.io/NYC_Wifi_Map"
+    demoUrl: "",
     coverUrl: "",
     snippetTitle: "Leaflet init + cluster",
     snippet: `import L from "leaflet";
-import "leaflet.markercluster";
+    import "leaflet.markercluster";
 
-const map = L.map("map").setView([40.7128, -74.0060], 11);
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: "&copy; OpenStreetMap",
-}).addTo(map);
+    const map = L.map("map").setView([40.7128, -74.0060], 11);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap",
+    }).addTo(map);
 
-const markers = L.markerClusterGroup();
-geojson.features.forEach(f => {
-  const [lng, lat] = f.geometry.coordinates;
-  const m = L.marker([lat, lng]).bindPopup(\`<b>\${f.properties.ssid}</b>\`);
-  markers.addLayer(m);
-});
-map.addLayer(markers);`,
+    const markers = L.markerClusterGroup();
+    geojson.features.forEach(f => {
+    const [lng, lat] = f.geometry.coordinates;
+    const m = L.marker([lat, lng]).bindPopup(\`<b>\${f.properties.ssid}</b>\`);
+    markers.addLayer(m);
+    });
+    map.addLayer(markers);`,
   },
 ];
 
-/** ---- Optional: auto-list a few recent repos from your GitHub ---- */
+
 const GITHUB_USERNAME = "dmorris95";
 async function fetchRepos(username) {
   try {
